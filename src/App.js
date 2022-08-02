@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import { Container, Stack, Flex, List, Heading } from "@chakra-ui/react";
+import { React, useState } from "react";
+import Player from "./components/Player";
 
 function App() {
+  //  Data for the Players
+  const [players, setPlayers] = useState([
+    { name: "Player 1" },
+    { name: "Player 2" },
+    { name: "Player 3" },
+    { name: "Player 4" },
+    { name: "Player 5" },
+  ]);
+
+  // Data for the Team
+  const [team, setTeam] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container maxW="800px">
+      <Flex justify="space-between" height="90vh" align="center">
+        <Stack width="300px">
+          <Heading fontSize="3xl" color="yellow.800" textAlign="center">
+            Players
+          </Heading>
+          <List p="4" minH="70vh" boxShadow="xl" borderRadius="md">
+            {players.map((e, i) => (
+              <Player key={e.name} item={e} />
+            ))}
+          </List>
+        </Stack>
+        <Stack width="300px">
+          <Heading fontSize="3xl" color="teal.800" textAlign="center">
+            Team
+          </Heading>
+          <List p="4" minH="70vh" boxShadow="xl" borderRadius="md"></List>
+        </Stack>
+      </Flex>
+    </Container>
   );
 }
 
