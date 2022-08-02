@@ -1,5 +1,6 @@
 import { Container, Stack, Flex, List, Heading } from "@chakra-ui/react";
 import { React, useState } from "react";
+import { useDrop } from "react-dnd";
 import Player from "./components/Player";
 
 function App() {
@@ -14,6 +15,17 @@ function App() {
 
   // Data for the Team
   const [team, setTeam] = useState([]);
+
+  // ------------------------------------------- Step # 1 for DND -------------------------------------------
+  const [{ isOver }, addToTeamRef] = useDrop({
+    accept: "player",
+    collect: (monitor) => ({ isOver: !!monitor.isOver() }),
+  });
+
+  const [{ isOver: isPlayerOver }, removeFromTeamRef] = useDrop({
+    accept: "team",
+    collect: (monitor) => ({ isOver: !!monitor.isOver() }),
+  });
 
   return (
     <Container maxW="800px">
