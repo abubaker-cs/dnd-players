@@ -32,8 +32,8 @@ function Player({ item, playerType, onDropPlayer, index }) {
       bg={
         isDragging
           ? playerType === "player"
-            ? "yellow.600"
-            : "teal.400"
+            ? "blue.600"
+            : "purple.400"
           : "white"
       }
       color={isDragging ? "white" : "black"}

@@ -52,16 +52,19 @@ function App() {
   // ----------------------------------------- // Step #  for DND -------------------------------------------
   return (
     <Container maxW="800px">
+      <Heading p="3" mt="5" align="center" color="pink.500">
+        Prototype based on React DnD
+      </Heading>
       <Flex justify="space-between" height="90vh" align="center">
         <Stack width="300px">
-          <Heading fontSize="2xl" color="yellow.800" textAlign="center">
+          <Heading fontSize="2xl" color="blue.800" textAlign="center">
             Classify your lables
           </Heading>
           <List
             bgGradient={
               isPlayerOver
-                ? "linear(to-b, yellow.300, yellow.500)"
-                : "linear(to-b, yellow.100, yellow.200)"
+                ? "linear(to-b, blue.300, blue.500)"
+                : "linear(to-b, blue.100, blue.200)"
             }
             p="4"
             minH="70vh"
@@ -81,14 +84,14 @@ function App() {
           </List>
         </Stack>
         <Stack width="300px">
-          <Heading fontSize="2xl" color="teal.800" textAlign="center">
+          <Heading fontSize="2xl" color="purple.800" textAlign="center">
             Selected Classifications
           </Heading>
           <List
             bgGradient={
               isOver
-                ? "linear(to-b, teal.300, teal.500)"
-                : "linear(to-b, teal.100, teal.200)"
+                ? "linear(to-b, purple.300, purple.500)"
+                : "linear(to-b, purple.100, purple.200)"
             }
             p="4"
             minH="70vh"
