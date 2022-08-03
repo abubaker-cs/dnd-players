@@ -27,6 +27,7 @@ function App() {
     collect: (monitor) => ({ isOver: !!monitor.isOver() }),
   });
 
+  // ----------------------------------------- // Step #  for DND -------------------------------------------
   return (
     <Container maxW="800px">
       <Flex justify="space-between" height="90vh" align="center">
