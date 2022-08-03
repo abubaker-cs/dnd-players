@@ -27,6 +27,14 @@ function App() {
     collect: (monitor) => ({ isOver: !!monitor.isOver() }),
   });
 
+  const movePlayerToTeam = (item) => {
+    console.log("movePlayerToTeam", item);
+  };
+
+  const removePlayerFromTeam = (item) => {
+    console.log("removePlayerFromTeam", item);
+  };
+
   // ----------------------------------------- // Step #  for DND -------------------------------------------
   return (
     <Container maxW="800px">
@@ -35,9 +43,21 @@ function App() {
           <Heading fontSize="3xl" color="yellow.800" textAlign="center">
             Players
           </Heading>
-          <List p="4" minH="70vh" boxShadow="xl" borderRadius="md">
+          <List
+            p="4"
+            minH="70vh"
+            boxShadow="xl"
+            borderRadius="md"
+            ref={removeFromTeamRef}
+          >
             {players.map((e, i) => (
-              <Player key={e.name} item={e} />
+              <Player
+                key={e.name}
+                item={e}
+                type="player"
+                index={i}
+                onDropPlayer={movePlayerToTeam}
+              />
             ))}
           </List>
         </Stack>
@@ -45,7 +65,13 @@ function App() {
           <Heading fontSize="3xl" color="teal.800" textAlign="center">
             Team
           </Heading>
-          <List p="4" minH="70vh" boxShadow="xl" borderRadius="md"></List>
+          <List
+            p="4"
+            minH="70vh"
+            boxShadow="xl"
+            borderRadius="md"
+            ref={addToTeamRef}
+          ></List>
         </Stack>
       </Flex>
     </Container>
