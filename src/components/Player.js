@@ -2,19 +2,18 @@ import React from "react";
 import { useDrag } from "react-dnd";
 import { ListItem } from "@chakra-ui/react";
 
-function Player({ item, type, index, onDropPlayer }) {
+function Player({ item, playerType, onDropPlayer, index }) {
   // ------------------------------------------- Step # 1 for DND -------------------------------------------
-  const [{ isDraggble }, dragRef] = useDrag({
-    type: type,
+  const [{ isDragging }, dragRef] = useDrag({
+    type: playerType,
     item: () => ({ ...item, index }),
     end: (item, monitor) => {
       const dropResult = monitor.getDropResult();
 
-      if (dropResult && item) {
+      if (item && dropResult) {
         onDropPlayer(item);
       }
     },
-
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
@@ -30,6 +29,14 @@ function Player({ item, type, index, onDropPlayer }) {
       mb="2"
       textAlign="center"
       ref={dragRef}
+      bg={
+        isDragging
+          ? playerType === "player"
+            ? "yellow.600"
+            : "teal.400"
+          : "white"
+      }
+      color={isDragging ? "white" : "black"}
     >
       {item.name}
     </ListItem>
